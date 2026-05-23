@@ -15,6 +15,7 @@ This beginner skill is a first hands-on example for the Awesome LLMs ecosystem.
 It teaches the expected skill file structure, basic script execution, and cross-platform compatibility.
 
 ### Key Features
+
 - Python-first execution using `assets/hello_world.py`
 - Built-in fallback behavior for systems without Python
 - Script support for Unix/Linux/macOS (`.sh`), Windows CMD (`.bat`), and PowerShell (`.ps1`)
@@ -22,43 +23,51 @@ It teaches the expected skill file structure, basic script execution, and cross-
 ## When to Use
 
 Use this skill when you want to:
-- Install your first skill and verify your setup quickly
-- Learn how to run skill scripts from terminal/CLI environments
-- Understand how to reference installed skills in VS Code or Copilot CLI workflows
+
+- Verify your skill installation is working correctly
+- Get a quick "Hello, World!" output to test your setup
+- Learn how installed skills work with VS Code Copilot Chat
+- Practice using skills with natural language prompts
 
 ## How to Use
 
-### Step 1: Install the skill
+### Installation
 
-Using GitHub CLI (recommended for first-time users):
-
-```bash
-gh repo clone vinaymavi/awesome-llms
-cd awesome-llms
-```
-
-Then copy this directory into your local skills path:
+Install this skill using GitHub CLI:
 
 ```bash
-cp -r skills/hello-world <your-local-skills-directory>/hello-world
+gh skills install vinaymavi/awesome-llms hello-world
 ```
 
-### Step 2: Run on your platform
+### Invoke the Skill
 
-- Unix/Linux/macOS:
-  ```bash
-  sh assets/hello_world.sh
-  ```
-- Windows CMD:
-  ```bat
-  assets\hello_world.bat
-  ```
-- PowerShell:
-  ```powershell
-  ./assets/hello_world.ps1
-  ```
+Once installed, use any of these prompts in VS Code Copilot Chat or GitHub Copilot CLI:
 
-### Step 3: Verify the output
+- **Simple command**: "Run Hello World"
+- **Skill reference**: "Run Hello World Skill"
+- **Contextual prompts**:
+  - "Hello World from Skills"
+  - "Hello World from VS Code Skills"
+  - "Use the hello-world skill"
+  - "Execute hello-world"
+
+### Example Copilot Chat Interaction
+
+**Prompt**: "Run Hello World"
+
+**Output**:
+
+```text
+Hello, World!
+```
+
+The skill automatically:
+
+1. Checks if Python is available and runs `hello_world.py`
+2. Falls back to your platform's native shell if Python isn't available
+3. Returns the greeting in your terminal
+
+### Verify the Output
 
 Expected terminal output:
 
@@ -66,36 +75,44 @@ Expected terminal output:
 Hello, World!
 ```
 
-## Practical Example
-
-```text
-Input: Run the Hello World skill from terminal.
-Process: Script checks Python first, then falls back to native shell echo output.
-Output: Hello, World!
-```
-
-### Copilot CLI integration example
-
-```bash
-gh copilot suggest "Use the hello-world skill and print hello world"
-```
-
 ## Requirements
 
-- **VS Code Version**: 1.85.0 or later
-- **Languages**: Python (preferred), shell/cmd/PowerShell fallback supported
-- **External Tools**: None required for fallback paths
+- **VS Code Version**: 1.85.0 or later (with GitHub Copilot Chat)
+- **GitHub Copilot**: Installed and authenticated
+- **Languages**: Python (preferred), or shell/cmd/PowerShell available on your system
+- **External Tools**: None required; falls back to native system commands if Python unavailable
+
+## Installation Requirements
+
+- **GitHub CLI**: `gh` command-line tool installed and authenticated
+- Command: `gh skills` support (requires latest GitHub CLI version)
 
 ## Troubleshooting
 
+### Skill not recognized in Copilot Chat
+
+**Solution**: Verify the skill is properly installed with `gh skills list` and ensure VS Code is reloaded.
+
 ### Python is installed but not detected
-**Solution**: Confirm `python` or `python3` is available in `PATH` and rerun the platform script.
 
-### Script permission denied on Unix/macOS
-**Solution**: Run `chmod +x assets/hello_world.sh` and retry.
+**Solution**: The skill automatically detects Python in your PATH. If unavailable, the shell fallback is used. Restart your terminal and try again.
 
-### PowerShell execution policy blocks script
-**Solution**: Run with `powershell -ExecutionPolicy Bypass -File .\assets\hello_world.ps1`.
+### No output when invoking the skill
+
+**Solution**:
+
+1. Check that GitHub Copilot Chat is active in VS Code
+2. Verify the skill was installed: `gh skills list`
+3. Try using a specific prompt variant listed in the "Invoke the Skill" section
+4. Restart VS Code and retry
+
+### Skill installation fails
+
+**Solution**:
+
+- Ensure `gh` CLI is authenticated: `gh auth status`
+- Update GitHub CLI to latest version: `gh upgrade`
+- Check your internet connection and repository access
 
 ## Best Practices
 
