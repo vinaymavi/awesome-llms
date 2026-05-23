@@ -1,0 +1,33 @@
+{
+  "name": "awesome-llms",
+  "version": "1.0.0",
+  "description": "A curated collection of VSCode Skills, Agents, and Extensions for LLM-powered development workflows",
+  "keywords": [
+    "vscode",
+    "skills",
+    "agents",
+    "copilot",
+    "llm",
+    "ai",
+    "extensions"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/awesome-llms.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/awesome-llms/issues"
+  },
+  "homepage": "https://github.com/yourusername/awesome-llms#readme",
+  "scripts": {
+    "validate": "node scripts/validate-skills.js && node scripts/validate-agents.js",
+    "lint": "node scripts/lint-markdown.js",
+    "index": "node scripts/generate-index.js"
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0",
+    "markdown-it": "^13.0.0"
+  }
+}

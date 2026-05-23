@@ -1,0 +1,18 @@
+name: Quick Start
+
+on: [push, pull_request]
+
+jobs:
+    quick-check:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Check for required files
+              run: |
+                  if [ -f "README.md" ] && [ -f "CONTRIBUTING.md" ] && [ -d "skills" ] && [ -d "agents" ]; then
+                    echo "✅ Project structure looks good!"
+                  else
+                    echo "❌ Missing required project files"
+                    exit 1
+                  fi
